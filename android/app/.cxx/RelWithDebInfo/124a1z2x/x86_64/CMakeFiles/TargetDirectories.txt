@@ -1,0 +1,2 @@
+/Users/fajar/dev/flutterproject/Balance-App/android/app/.cxx/RelWithDebInfo/124a1z2x/x86_64/CMakeFiles/edit_cache.dir
+/Users/fajar/dev/flutterproject/Balance-App/android/app/.cxx/RelWithDebInfo/124a1z2x/x86_64/CMakeFiles/rebuild_cache.dir

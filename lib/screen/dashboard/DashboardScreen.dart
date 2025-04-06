@@ -18,147 +18,183 @@ class _DashboardState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return MyHomePage(
       Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          children: [
-            Expanded(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Expanded(
                 child: Container(
-              color: Color(0xFF0B0E4F),
-              width: 122,
-              height: 122,
-              alignment: Alignment.center,
-              child: Image.asset("assets/image/logo_2.png"),
-            ))
-          ],
-        ),
-        DashboardItem(
-          "Catatan Transaksi",
-          onPressed: () => showDialog(
-                context: context,
-                builder: (context) {
-                  return MonthPickerDialog(onItemPressed: (month) {
-                    Navigator.pushNamed(
-                      context,
-                      MainRoutes.transactionRecord.path,
-                      arguments: month
+                  color: Color(0xFF0B0E4F),
+                  width: 122,
+                  height: 122,
+                  alignment: Alignment.center,
+                  child: Image.asset("assets/image/logo_2.png"),
+                ),
+              ),
+            ],
+          ),
+          DashboardItem(
+            "Catatan Transaksi",
+            onPressed:
+                () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return MonthPickerDialog(
+                      onItemPressed: (month) {
+                        Navigator.pushNamed(
+                          context,
+                          MainRoutes.transactionRecord.path,
+                          arguments: month,
+                        );
+                      },
                     );
-                  });
-                })      
-        ),
-        DashboardItem("Jurnal Umum",
-            onPressed: () => showDialog(
-                context: context,
-                builder: (context) {
-                  return MonthPickerDialog(onItemPressed: (month) {
-                      showDialog(context: context, builder: (context){
-                        return ConfirmationDialog(
-                          "Konversikan Catatan Transaksi menjadi Jurnal Umum?",
-                           onItemPressed: (isConfirmed) {
-                              if(isConfirmed){
-                                Navigator.pushNamed(
-                                  context,
-                                  MainRoutes.generalLedger.path,
-                                  arguments: month
-                                );
-                              }
-                           }
-                          );
-                        }  
-                      ); 
-                  });
-                })),
-        DashboardItem(
-          "Buku Besar",
-          onPressed: () => showDialog(
-                context: context,
-                builder: (context) {
-                  return MonthPickerDialog(onItemPressed: (month) {
-                      showDialog(context: context, builder: (context){
-                        return ConfirmationDialog(
-                          "Konversikan Jurnal Umum menjadi Buku Besar?",
-                           onItemPressed: (isConfirmed) {
-                              if(isConfirmed){
-                                Navigator.pushNamed(
-                                  context,
-                                  MainRoutes.bigBook.path,
-                                  arguments: month
-                                );
-                              }
-                           }
-                          );
-                        }  
-                      ); 
-                  });
-                }),
-        ),
-        DashboardItem(
-          "Neraca Saldo",
-          onPressed: () => showDialog(
-                context: context,
-                builder: (context) {
-                  return MonthPickerDialog(onItemPressed: (month) {
-                      showDialog(context: context, builder: (context){
-                        return ConfirmationDialog(
-                          "Konversikan Buku Besar menjadi Neraca Saldo?",
-                           onItemPressed: (isConfirmed) {
-                              if(isConfirmed){
-                                Navigator.pushNamed(
-                                  context,
-                                  MainRoutes.trialBalance.path,
-                                  arguments: month
-                                );
-                              }
-                           }
-                          );
-                        }  
-                      ); 
-                  });
-                }),
-        ),
-        DashboardItem(
-          "Laporan Keuangan",
-          onPressed: () => showDialog(
-                context: context,
-                builder: (context) {
-                  return MonthPickerDialog(onItemPressed: (month) {
-                      showDialog(context: context, builder: (context){
-                        return ConfirmationDialog(
-                          "Konversikan Neraca Saldo menjadi Laporan Keuangan?",
-                           onItemPressed: (isConfirmed) {
-                              if(isConfirmed){
-                                Navigator.pushNamed(
-                                  context,
-                                  MainRoutes.financialStatements.path,
-                                  arguments: month
-                                );
-                              }
-                           }
-                          );
-                        }  
-                      ); 
-                  });
-                }),
-        ),
-        Spacer(),
-        Row(
-          children: [
-            Expanded(
+                  },
+                ),
+          ),
+          DashboardItem(
+            "Jurnal Umum",
+            onPressed:
+                () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return MonthPickerDialog(
+                      onItemPressed: (month) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return ConfirmationDialog(
+                              "Konversikan Catatan Transaksi menjadi Jurnal Umum?",
+                              onItemPressed: (isConfirmed) {
+                                if (isConfirmed) {
+                                  Navigator.pushNamed(
+                                    context,
+                                    MainRoutes.generalLedger.path,
+                                    arguments: month,
+                                  );
+                                }
+                              },
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+          ),
+          DashboardItem(
+            "Buku Besar",
+            onPressed:
+                () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return MonthPickerDialog(
+                      onItemPressed: (month) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return ConfirmationDialog(
+                              "Konversikan Jurnal Umum menjadi Buku Besar?",
+                              onItemPressed: (isConfirmed) {
+                                if (isConfirmed) {
+                                  Navigator.pushNamed(
+                                    context,
+                                    MainRoutes.bigBook.path,
+                                    arguments: month,
+                                  );
+                                }
+                              },
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+          ),
+          DashboardItem(
+            "Neraca Saldo",
+            onPressed:
+                () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return MonthPickerDialog(
+                      onItemPressed: (month) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return ConfirmationDialog(
+                              "Konversikan Buku Besar menjadi Neraca Saldo?",
+                              onItemPressed: (isConfirmed) {
+                                if (isConfirmed) {
+                                  Navigator.pushNamed(
+                                    context,
+                                    MainRoutes.trialBalance.path,
+                                    arguments: month,
+                                  );
+                                }
+                              },
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+          ),
+          DashboardItem(
+            "Laporan Keuangan",
+            onPressed:
+                () => showDialog(
+                  context: context,
+                  builder: (context) {
+                    return MonthPickerDialog(
+                      onItemPressed: (month) {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return ConfirmationDialog(
+                              "Konversikan Neraca Saldo menjadi Laporan Keuangan?",
+                              onItemPressed: (isConfirmed) {
+                                if (isConfirmed) {
+                                  Navigator.pushNamed(
+                                    context,
+                                    MainRoutes.financialStatements.path,
+                                    arguments: month,
+                                  );
+                                }
+                              },
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+          ),
+          Spacer(),
+          Row(
+            children: [
+              Expanded(
                 child: GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, MainRoutes.myAccount.path),
+                  onTap:
+                      () => Navigator.pushNamed(
+                        context,
+                        MainRoutes.myAccount.path,
+                      ),
                   child: Container(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              color: Color(0xFF0B0E4F),
-              width: 56,
-              height: 56,
-              alignment: Alignment.center,
-              child: Image.asset("assets/image/ic_person.png"),
-            ),
-                )
-            )
-          ],
-        ),
-      ],
-    ));
+                    padding: EdgeInsets.symmetric(vertical: 8),
+                    color: Color(0xFF0B0E4F),
+                    width: 56,
+                    height: 56,
+                    alignment: Alignment.center,
+                    child: Image.asset("assets/image/ic_person.png"),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

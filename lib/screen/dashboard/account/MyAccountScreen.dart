@@ -17,6 +17,23 @@ class MyAccountScreen extends StatefulWidget {
 }
 
 class _MyAccountScreenState extends State<MyAccountScreen> {
+  late double maxSize;
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    double width = MediaQuery.of(context).size.width;
+    bool isWebOrTablet = width > 600;
+    if (isWebOrTablet) {
+      maxSize = (1 / 4) * width;
+    } else {
+      double height = MediaQuery.of(context).size.height;
+      double constraint = width < height ? width : height;
+      maxSize = (5 / 6) * constraint;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MyHomePage(Column(
@@ -86,65 +103,46 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
           child: Column(
             children: [
               Container(
+                constraints:
+                    BoxConstraints(maxHeight: maxSize, maxWidth: maxSize),
                 margin: EdgeInsets.only(left: 55, right: 55, top: 22),
                 padding: EdgeInsets.symmetric(horizontal: 22, vertical: 13),
                 decoration: BoxDecoration(
                     border: Border.all(color: colorsNavy, width: 1)),
                 child: Image.asset("assets/image/logo_ukmp.png"),
               ),
-              Container(
-                  margin: EdgeInsets.only(top: 4),
-                  child: TextButton(
-                    style: ButtonStyle(
-                        alignment: Alignment.centerLeft,
-                        splashFactory: NoSplash.splashFactory),
-                    onPressed: () => {Navigator.pop(context)},
-                    child: Text(
-                      "Edit Foto",
-                      style: TextStyle(
-                          color: Colors.transparent,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          decoration: TextDecoration.underline,
-                          decorationColor: colorsNavy,
-                          shadows: [
-                            Shadow(color: colorsNavy, offset: Offset(0, -2))
-                          ]),
-                    ),
+              SizedBox(
+                height: 44,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Nama Entitas",
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w500,
+                      color: colorsNavy),
+                ),
+              ),
+              Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    margin: EdgeInsets.only(top: 8, bottom: 11),
+                    child: Text("UKM Penalaran Unand",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 19,
+                            fontFamily: "Inter",
+                            fontWeight: FontWeight.w500,
+                            color: colorsNavy)),
                   )),
-                  SizedBox(height: 44,),
-                   Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Nama Entitas",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontFamily: "Inter",
-                          fontWeight: FontWeight.w500,
-                          color: colorsNavy),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      margin: EdgeInsets.only(top: 8, bottom: 11),
-                      child: Text(
-                      "UKM Penalaran Unand",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                          fontSize: 19,
-                          fontFamily: "Inter",
-                          fontWeight: FontWeight.w500,
-                          color: colorsNavy)
-                    ),
-                    )
-                  ),
-                  Divider(
-                    color: colorsNavy,
-                    height: 2,
-                    thickness: 3,
-                  )
+              Divider(
+                color: colorsNavy,
+                height: 2,
+                thickness: 3,
+              )
             ],
           ),
         ),
@@ -160,35 +158,32 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
               alignment: Alignment.center,
               child: GestureDetector(
                 onTap: () => showDialog(
-                context: context,
-                builder: (context) {
-                  return ConfirmationDialog(
-                    "Keluar dari akun?",
-                    textColor: Colors.white,
-                    buttonColor: Colors.white,
-                    buttonTextColor: colorsNavy,
-                    backgroundColor: colorsNavy,
-                    isTextBold: false,
-                    height: 107,
-                    radius: 0,
-                     onItemPressed: (isConfirmed){
-                      if(isConfirmed){
-                        Navigator.pushNamed(context, MainRoutes.login.path);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text("Keluar dari akun..")
-                              )
-                          );
-                      }
-                     }
-                  );
-                }),
+                    context: context,
+                    builder: (context) {
+                      return ConfirmationDialog("Keluar dari akun?",
+                          textColor: Colors.white,
+                          buttonColor: Colors.white,
+                          buttonTextColor: colorsNavy,
+                          backgroundColor: colorsNavy,
+                          isTextBold: false,
+                          height: 107,
+                          radius: 0, onItemPressed: (isConfirmed) {
+                        if (isConfirmed) {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                                MainRoutes.login.path, (route) => false);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text("Keluar dari akun..")));
+                          });
+                        }
+                      });
+                    }),
                 child: SizedBox(
                   child: Image.asset("assets/image/ic_logout.png"),
                 ),
               ),
-            )
-          )
+            ))
           ],
         ),
       ],

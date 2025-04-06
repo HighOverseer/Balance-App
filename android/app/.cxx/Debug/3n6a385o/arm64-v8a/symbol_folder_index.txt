@@ -1,0 +1,1 @@
+/Users/fajar/dev/flutterproject/Balance-App/build/app/intermediates/cxx/Debug/3n6a385o/obj/arm64-v8a

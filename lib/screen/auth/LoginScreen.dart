@@ -1,7 +1,6 @@
 import 'package:first_project/component/CircularCheckBox.dart';
 import 'package:first_project/component/EditText.dart';
 import 'package:first_project/component/MyButton.dart';
-import 'package:first_project/main.dart';
 import 'package:first_project/screen/dashboard/DashboardScreen.dart';
 
 import 'package:first_project/theme/colors.dart';

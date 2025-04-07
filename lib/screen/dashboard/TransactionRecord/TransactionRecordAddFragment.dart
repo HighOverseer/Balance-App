@@ -1,8 +1,6 @@
 import 'package:first_project/component/CircularCheckBox.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordRow.dart';
 import 'package:first_project/model/TransactionRecord.dart';
 import 'package:first_project/theme/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TransactionRecordAddFragment extends StatefulWidget {

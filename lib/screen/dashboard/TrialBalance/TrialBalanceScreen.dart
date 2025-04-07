@@ -1,8 +1,4 @@
-import 'package:first_project/screen/dashboard/GeneralLedger/GeneralLedgerHeadRow.dart';
-import 'package:first_project/screen/dashboard/GeneralLedger/GeneralLedgerRow.dart';
 import 'package:first_project/component/MonthPickerDialog.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordHeadRow.dart';
-import 'package:first_project/main.dart';
 import 'package:first_project/screen/dashboard/TrialBalance/TrialBalanceHeadRow.dart';
 import 'package:first_project/screen/dashboard/TrialBalance/TrialBalanceRow.dart';
 import 'package:first_project/theme/colors.dart';

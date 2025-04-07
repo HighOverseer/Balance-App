@@ -2,9 +2,7 @@ import 'package:first_project/component/ConfirmationDilaog.dart';
 import 'package:first_project/component/DashboardItem.dart';
 import 'package:first_project/component/MonthPickerDialog.dart';
 import 'package:first_project/main.dart';
-import 'package:first_project/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});

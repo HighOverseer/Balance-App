@@ -1,4 +1,3 @@
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordRow.dart';
 import 'package:first_project/model/TransactionRecord.dart';
 import 'package:first_project/main.dart';
 import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordAddFragment.dart';

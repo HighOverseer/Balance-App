@@ -1,14 +1,10 @@
-import 'dart:io';
 import 'package:first_project/component/CircularCheckBox.dart';
 import 'package:first_project/component/EditText.dart';
 import 'package:first_project/component/FilePickerDialog.dart';
 import 'package:first_project/component/MyButton.dart';
 import 'package:first_project/main.dart';
 import 'package:first_project/theme/colors.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});

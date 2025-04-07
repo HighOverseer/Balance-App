@@ -3,11 +3,6 @@ import 'package:first_project/screen/dashboard/FinancialStatements/FinancialStat
 import 'package:first_project/screen/dashboard/FinancialStatements/FinancialStatementsMonetaryPosition.dart';
 import 'package:first_project/screen/dashboard/FinancialStatements/FinancialStatemtentsList.dart';
 import 'package:first_project/screen/dashboard/FinancialStatements/FinancialStatemtnsCashFlow.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordRow.dart';
-import 'package:first_project/model/TransactionRecord.dart';
-import 'package:first_project/main.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordAddFragment.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordListFragment.dart';
 import 'package:first_project/theme/colors.dart';
 import 'package:flutter/material.dart';
 

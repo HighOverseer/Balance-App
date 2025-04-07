@@ -5,7 +5,6 @@ import 'package:first_project/screen/dashboard/DashboardScreen.dart';
 import 'package:first_project/screen/auth/RegistrationScreen.dart';
 import 'package:first_project/screen/dashboard/FinancialStatements/FinancialStatementsScreen.dart';
 import 'package:first_project/screen/dashboard/GeneralLedger/GeneralLedgerScreen.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordListFragment.dart';
 import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordScreen.dart';
 import 'package:first_project/screen/dashboard/TrialBalance/TrialBalanceScreen.dart';
 import 'package:flutter/material.dart';

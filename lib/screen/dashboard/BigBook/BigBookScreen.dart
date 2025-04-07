@@ -1,13 +1,6 @@
 import 'package:first_project/screen/dashboard/BigBook/BigBookHeadrow.dart';
 import 'package:first_project/screen/dashboard/BigBook/BigBookRow.dart';
-import 'package:first_project/screen/dashboard/GeneralLedger/GeneralLedgerHeadRow.dart';
-import 'package:first_project/screen/dashboard/GeneralLedger/GeneralLedgerRow.dart';
 import 'package:first_project/component/MonthPickerDialog.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordRow.dart';
-import 'package:first_project/model/TransactionRecord.dart';
-import 'package:first_project/main.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordAddFragment.dart';
-import 'package:first_project/screen/dashboard/TransactionRecord/TransactionRecordListFragment.dart';
 import 'package:first_project/theme/colors.dart';
 import 'package:flutter/material.dart';
 

@@ -43,26 +43,30 @@ final Map<String, List<TransactionRecord>> transactionRecordRepo = {
   "September": [],
   "Oktober": [],
   "November": [],
-  "Desember": []
+  "Desember": [],
 };
 
 class MyApp extends StatelessWidget {
-
   const MyApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: MainRoutes.login.path,
       routes: {
-        MainRoutes.login.path: (context) => LoginScreen(() => Navigator.pushNamed(context, MainRoutes.registration.path)),
+        MainRoutes.login.path:
+            (context) => LoginScreen(
+              () => Navigator.pushNamed(context, MainRoutes.registration.path),
+            ),
         MainRoutes.registration.path: (context) => const RegistrationScreen(),
         MainRoutes.dashboard.path: (context) => const DashboardScreen(),
-        MainRoutes.transactionRecord.path: (context) => TransactionRecordScreen(),
+        MainRoutes.transactionRecord.path:
+            (context) => TransactionRecordScreen(),
         MainRoutes.generalLedger.path: (context) => const GeneralLedgerScreen(),
         MainRoutes.bigBook.path: (context) => const BigBookScreen(),
         MainRoutes.trialBalance.path: (context) => const TrialBalanceScreen(),
-        MainRoutes.financialStatements.path : (context) => const FinancialStatementsScreen(),
+        MainRoutes.financialStatements.path:
+            (context) => const FinancialStatementsScreen(),
         MainRoutes.myAccount.path: (context) => const MyAccountScreen(),
       },
       title: 'Flutter Demo',
@@ -72,16 +76,5 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
     );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage(this.body, {super.key});
-
-  final Widget body;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: body);
   }
 }

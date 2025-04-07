@@ -6,7 +6,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TransactionRecordAddFragment extends StatefulWidget {
-  TransactionRecordAddFragment(this.navigateBack, this.save, {super.key, this.transactionRecord});
+  TransactionRecordAddFragment(
+    this.navigateBack,
+    this.save, {
+    super.key,
+    this.transactionRecord,
+  });
 
   final Function() navigateBack;
   final TransactionRecord? transactionRecord;
@@ -18,13 +23,13 @@ class TransactionRecordAddFragment extends StatefulWidget {
 }
 
 class _TransactionRecordAddState extends State<TransactionRecordAddFragment> {
-
   String? date;
   TransactionRevenueTypes? transactionRevenueTypes;
   TransactionExpenseTypes? transactionExpenseTypes;
   bool? isInCash;
   String? additionalInformation;
   String? value;
+  late TextEditingController _controller;
 
   @override
   void initState() {
@@ -35,30 +40,45 @@ class _TransactionRecordAddState extends State<TransactionRecordAddFragment> {
     isInCash = widget.transactionRecord?.isInCash;
     additionalInformation = widget.transactionRecord?.additionalInformation;
     value = widget.transactionRecord?.value;
+    _controller = TextEditingController(text: date ?? "");
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Column(
-      children: [
-        Flexible(
+      child: Column(
+        children: [
+          Flexible(
             fit: FlexFit.loose,
             child: Stack(
               children: [
                 ListView(
-                  padding:
-                      EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 112),
+                  padding: EdgeInsets.only(
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 112,
+                  ),
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   children: [
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 14, horizontal: 36),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 14,
+                        horizontal: 36,
+                      ),
                       decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(width: 3, color: colorsNavy))),
+                        border: Border(
+                          bottom: BorderSide(width: 3, color: colorsNavy),
+                        ),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -66,52 +86,51 @@ class _TransactionRecordAddState extends State<TransactionRecordAddFragment> {
                             textAlign: TextAlign.left,
                             "Tanggal",
                             style: TextStyle(
-
-                                fontFamily: "Inter",
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: colorsNavy),
+                              fontFamily: "Inter",
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: colorsNavy,
+                            ),
                           ),
                           Container(
                             margin: EdgeInsets.all(0),
                             padding: EdgeInsets.all(0),
                             decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                shape: BoxShape.rectangle,
+                              color: Colors.transparent,
+                              shape: BoxShape.rectangle,
                             ),
-                            child: 
-                            TextField(
-                              controller: TextEditingController(text: date ?? ""),
+                            child: TextField(
+                              controller: _controller,
                               onChanged: (value) {
                                 date = value;
                               },
                               autocorrect: false,
                               enableSuggestions: false,
                               autofocus: false,
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: colorsNavy),
+                              style: TextStyle(fontSize: 16, color: colorsNavy),
                               decoration: InputDecoration(
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.zero,
-                                  border: InputBorder.none,
-                                  hintText: "xx/xx/xxxx",
-                                  hintStyle: TextStyle(
-                                    color: Color(0xFFCECEE1)
-                                  ),
-                                  ),
+                                isDense: true,
+                                contentPadding: EdgeInsets.zero,
+                                border: InputBorder.none,
+                                hintText: "xx/xx/xxxx",
+                                hintStyle: TextStyle(color: Color(0xFFCECEE1)),
+                              ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 14, horizontal: 36),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 14,
+                        horizontal: 36,
+                      ),
                       decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(width: 3, color: colorsNavy))),
+                        border: Border(
+                          bottom: BorderSide(width: 3, color: colorsNavy),
+                        ),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -119,111 +138,150 @@ class _TransactionRecordAddState extends State<TransactionRecordAddFragment> {
                             textAlign: TextAlign.left,
                             "Jenis Transaksi",
                             style: TextStyle(
-                                fontFamily: "Inter",
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: colorsNavy),
+                              fontFamily: "Inter",
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: colorsNavy,
+                            ),
                           ),
-                          SizedBox(height: 6,),
+                          SizedBox(height: 6),
                           Text(
                             textAlign: TextAlign.left,
                             "Pemasukan",
                             style: TextStyle(
-                                fontFamily: "Inter",
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                decoration: TextDecoration.underline,
-                                decorationColor: colorsNavy,
-                                color: Colors.transparent,
-                                shadows: [Shadow(color: colorsNavy, offset: Offset(0, -2))]
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.underline,
+                              decorationColor: colorsNavy,
+                              color: Colors.transparent,
+                              shadows: [
+                                Shadow(
+                                  color: colorsNavy,
+                                  offset: Offset(0, -2),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(height: 8),
                           CircularCheckedBox(
                             text: "Penjualan",
-                            onChanged: (newValue) => setState(() {
-                              transactionRevenueTypes = TransactionRevenueTypes.sale;
-                            }),
-                            isChecked: transactionRevenueTypes == TransactionRevenueTypes.sale,
+                            onChanged:
+                                (newValue) => setState(() {
+                                  transactionRevenueTypes =
+                                      TransactionRevenueTypes.sale;
+                                }),
+                            isChecked:
+                                transactionRevenueTypes ==
+                                TransactionRevenueTypes.sale,
                             fontSize: 16,
                             textColor: colorsNavy,
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(height: 8),
                           CircularCheckedBox(
                             text: "Penyewaan",
-                            onChanged: (newValue) => setState(() {
-                              transactionRevenueTypes = TransactionRevenueTypes.rental;
-                            }),
-                            isChecked: transactionRevenueTypes == TransactionRevenueTypes.rental,
+                            onChanged:
+                                (newValue) => setState(() {
+                                  transactionRevenueTypes =
+                                      TransactionRevenueTypes.rental;
+                                }),
+                            isChecked:
+                                transactionRevenueTypes ==
+                                TransactionRevenueTypes.rental,
                             fontSize: 16,
                             textColor: colorsNavy,
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(height: 8),
                           CircularCheckedBox(
                             text: "Penerimaan",
-                            onChanged: (newValue) => setState(() {
-                              transactionRevenueTypes = TransactionRevenueTypes.receipt;
-                            }),
-                            isChecked: transactionRevenueTypes == TransactionRevenueTypes.receipt,
+                            onChanged:
+                                (newValue) => setState(() {
+                                  transactionRevenueTypes =
+                                      TransactionRevenueTypes.receipt;
+                                }),
+                            isChecked:
+                                transactionRevenueTypes ==
+                                TransactionRevenueTypes.receipt,
                             fontSize: 16,
                             textColor: colorsNavy,
                           ),
 
-                          SizedBox(height: 12,),
+                          SizedBox(height: 12),
                           Text(
                             textAlign: TextAlign.left,
                             "Pengeluaran",
                             style: TextStyle(
-                                fontFamily: "Inter",
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                decoration: TextDecoration.underline,
-                                decorationColor: colorsNavy,
-                                color: Colors.transparent,
-                                shadows: [Shadow(color: colorsNavy, offset: Offset(0, -2))]
+                              fontFamily: "Inter",
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.underline,
+                              decorationColor: colorsNavy,
+                              color: Colors.transparent,
+                              shadows: [
+                                Shadow(
+                                  color: colorsNavy,
+                                  offset: Offset(0, -2),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(height: 8),
                           CircularCheckedBox(
                             text: "Pembelian",
-                            onChanged: (newValue) => setState(() {
-                              transactionExpenseTypes = TransactionExpenseTypes.purchase;
-                            }),
-                            isChecked: transactionExpenseTypes == TransactionExpenseTypes.purchase,
+                            onChanged:
+                                (newValue) => setState(() {
+                                  transactionExpenseTypes =
+                                      TransactionExpenseTypes.purchase;
+                                }),
+                            isChecked:
+                                transactionExpenseTypes ==
+                                TransactionExpenseTypes.purchase,
                             fontSize: 16,
                             textColor: colorsNavy,
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(height: 8),
                           CircularCheckedBox(
                             text: "Penyewaan",
-                            onChanged: (newValue) => setState(() {
-                              transactionExpenseTypes = TransactionExpenseTypes.rental;
-                            }),
-                            isChecked: transactionExpenseTypes == TransactionExpenseTypes.rental,
+                            onChanged:
+                                (newValue) => setState(() {
+                                  transactionExpenseTypes =
+                                      TransactionExpenseTypes.rental;
+                                }),
+                            isChecked:
+                                transactionExpenseTypes ==
+                                TransactionExpenseTypes.rental,
                             fontSize: 16,
                             textColor: colorsNavy,
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(height: 8),
                           CircularCheckedBox(
                             text: "Pembayaran",
-                            onChanged: (newValue) => setState(() {
-                              transactionExpenseTypes = TransactionExpenseTypes.payment;
-                            }),
-                            isChecked: transactionExpenseTypes == TransactionExpenseTypes.payment,
+                            onChanged:
+                                (newValue) => setState(() {
+                                  transactionExpenseTypes =
+                                      TransactionExpenseTypes.payment;
+                                }),
+                            isChecked:
+                                transactionExpenseTypes ==
+                                TransactionExpenseTypes.payment,
                             fontSize: 16,
                             textColor: colorsNavy,
-                          ),                        
+                          ),
                         ],
                       ),
                     ),
 
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 14, horizontal: 36),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 14,
+                        horizontal: 36,
+                      ),
                       decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(width: 3, color: colorsNavy))),
+                        border: Border(
+                          bottom: BorderSide(width: 3, color: colorsNavy),
+                        ),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -231,40 +289,46 @@ class _TransactionRecordAddState extends State<TransactionRecordAddFragment> {
                             textAlign: TextAlign.left,
                             "Metode Transaksi",
                             style: TextStyle(
-                                fontFamily: "Inter",
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: colorsNavy),
+                              fontFamily: "Inter",
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: colorsNavy,
+                            ),
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(height: 8),
                           CircularCheckedBox(
                             text: "Tunai",
-                            onChanged: (newValue) => setState(() {
-                              isInCash = true;
-                            }),
+                            onChanged:
+                                (newValue) => setState(() {
+                                  isInCash = true;
+                                }),
                             isChecked: isInCash == true,
                             fontSize: 16,
                             textColor: colorsNavy,
                           ),
-                          SizedBox(height: 8,),
+                          SizedBox(height: 8),
                           CircularCheckedBox(
                             text: "Non-Tunai",
-                            onChanged: (newValue) => setState(() {
-                              isInCash = false;
-                            }),
+                            onChanged:
+                                (newValue) => setState(() {
+                                  isInCash = false;
+                                }),
                             isChecked: isInCash == false,
                             fontSize: 16,
                             textColor: colorsNavy,
                           ),
-                                 
                         ],
                       ),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding:
-                          EdgeInsets.only(left: 36, right: 36, top: 14, bottom: 0),
-                      
+                      padding: EdgeInsets.only(
+                        left: 36,
+                        right: 36,
+                        top: 14,
+                        bottom: 0,
+                      ),
+
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -272,51 +336,50 @@ class _TransactionRecordAddState extends State<TransactionRecordAddFragment> {
                             textAlign: TextAlign.left,
                             "Nilai (Rupiah)",
                             style: TextStyle(
-                                fontFamily: "Inter",
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: colorsNavy),
+                              fontFamily: "Inter",
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: colorsNavy,
+                            ),
                           ),
-                          
+
                           Container(
                             margin: EdgeInsets.all(0),
                             padding: EdgeInsets.all(0),
                             decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                shape: BoxShape.rectangle,
+                              color: Colors.transparent,
+                              shape: BoxShape.rectangle,
                             ),
-                            child: 
-                            TextField(
-                              controller: TextEditingController(text:  value ?? ""),
+                            child: TextField(
+                              controller: TextEditingController(
+                                text: value ?? "",
+                              ),
                               autocorrect: false,
                               enableSuggestions: false,
                               autofocus: false,
                               onChanged: (value) {
                                 this.value = value;
                               },
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: colorsNavy),
+                              style: TextStyle(fontSize: 16, color: colorsNavy),
                               decoration: InputDecoration(
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.zero,
-                                  border: InputBorder.none,
-                                  hintText: "Nilai barang/dana",
-                                  hintStyle: TextStyle(
-                                    color: Color(0xFFCECEE1)
-                                  ),
-                                  ),
+                                isDense: true,
+                                contentPadding: EdgeInsets.zero,
+                                border: InputBorder.none,
+                                hintText: "Nilai barang/dana",
+                                hintStyle: TextStyle(color: Color(0xFFCECEE1)),
+                              ),
                             ),
-                          )
-                                 
+                          ),
                         ],
                       ),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 8, horizontal: 36),
-                      
+                      padding: EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 36,
+                      ),
+
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -324,104 +387,118 @@ class _TransactionRecordAddState extends State<TransactionRecordAddFragment> {
                             textAlign: TextAlign.left,
                             "Keterangan Tambahan",
                             style: TextStyle(
-                                fontFamily: "Inter",
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: colorsNavy),
+                              fontFamily: "Inter",
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: colorsNavy,
+                            ),
                           ),
-                          
+
                           Container(
                             margin: EdgeInsets.all(0),
                             padding: EdgeInsets.all(0),
                             decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                shape: BoxShape.rectangle,
+                              color: Colors.transparent,
+                              shape: BoxShape.rectangle,
                             ),
-                            child: 
-                            TextField(
-                              controller: TextEditingController(text: additionalInformation ?? ""),
+                            child: TextField(
+                              controller: TextEditingController(
+                                text: additionalInformation ?? "",
+                              ),
                               autocorrect: false,
                               enableSuggestions: false,
                               autofocus: false,
                               onChanged: (value) {
                                 additionalInformation = value;
                               },
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: colorsNavy),
+                              style: TextStyle(fontSize: 16, color: colorsNavy),
                               decoration: InputDecoration(
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.zero,
-                                  border: InputBorder.none,
-                                  hintText: "Nama barang/Nama Dana",
-                                  hintStyle: TextStyle(
-                                    color: Color(0xFFCECEE1)
-                                  ),
-                                  ),
+                                isDense: true,
+                                contentPadding: EdgeInsets.zero,
+                                border: InputBorder.none,
+                                hintText: "Nama barang/Nama Dana",
+                                hintStyle: TextStyle(color: Color(0xFFCECEE1)),
+                              ),
                             ),
-                          )
-                                 
+                          ),
                         ],
                       ),
-                    )
+                    ),
+                    SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
                   ],
                 ),
                 Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      margin: EdgeInsets.only(bottom: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(Color(0xFFCECEE1)),
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                              Color(0xFFCECEE1),
+                            ),
                             shape: MaterialStatePropertyAll(
-                                RoundedRectangleBorder()),
+                              RoundedRectangleBorder(),
+                            ),
                             padding: MaterialStatePropertyAll(
-                                EdgeInsets.symmetric(
-                                    vertical: 0, horizontal: 26))),
-                        onPressed: widget.navigateBack,
-                        child: Text(
-                          "Batal",
-                          style: TextStyle(
+                              EdgeInsets.symmetric(vertical: 0, horizontal: 26),
+                            ),
+                          ),
+                          onPressed: widget.navigateBack,
+                          child: Text(
+                            "Batal",
+                            style: TextStyle(
                               fontFamily: "Inter",
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
-                              color: colorsNavy),
+                              color: colorsNavy,
+                            ),
+                          ),
                         ),
-                      ),
-                          ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(colorsNavy),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                              colorsNavy,
+                            ),
                             shape: MaterialStatePropertyAll(
-                                RoundedRectangleBorder()),
+                              RoundedRectangleBorder(),
+                            ),
                             padding: MaterialStatePropertyAll(
-                                EdgeInsets.symmetric(
-                                    vertical: 0, horizontal: 18))),
+                              EdgeInsets.symmetric(vertical: 0, horizontal: 18),
+                            ),
+                          ),
                           onPressed: () {
-
-                            if(date == null || date?.isEmpty == true || transactionRevenueTypes == null || transactionExpenseTypes == null || isInCash == null || additionalInformation == null || additionalInformation?.isEmpty == true){
+                            if (date == null ||
+                                date?.isEmpty == true ||
+                                transactionRevenueTypes == null ||
+                                transactionExpenseTypes == null ||
+                                isInCash == null ||
+                                additionalInformation == null ||
+                                additionalInformation?.isEmpty == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text("Field tidak boleh ada yang kosong"))
+                                SnackBar(
+                                  content: Text(
+                                    "Field tidak boleh ada yang kosong",
+                                  ),
+                                ),
                               );
                               return;
                             }
 
                             bool isNew = widget.transactionRecord == null;
-                            TransactionRecord transactionRecord; 
-                            if(isNew){
+                            TransactionRecord transactionRecord;
+                            if (isNew) {
                               transactionRecord = TransactionRecord(
                                 date!,
                                 transactionRevenueTypes!,
                                 transactionExpenseTypes!,
                                 isInCash!,
                                 additionalInformation!,
-                                value!
+                                value!,
                               );
-                            }else{
+                            } else {
                               transactionRecord = TransactionRecord(
                                 id: widget.transactionRecord?.id,
                                 date!,
@@ -429,27 +506,30 @@ class _TransactionRecordAddState extends State<TransactionRecordAddFragment> {
                                 transactionExpenseTypes!,
                                 isInCash!,
                                 additionalInformation!,
-                                value!
+                                value!,
                               );
                             }
                             widget.save(transactionRecord, isNew);
                           },
-                        child: Text(
-                          "Simpan",
-                          style: TextStyle(
+                          child: Text(
+                            "Simpan",
+                            style: TextStyle(
                               fontFamily: "Inter",
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white),
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
-                      ),
-                        ],
-                      )
-                    ))
+                      ],
+                    ),
+                  ),
+                ),
               ],
-            ))
-      ],
-    ));
-  
-}
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
